@@ -8,12 +8,32 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <audio src="audio/WelcomeToWebsite.mp3" autoplay></audio>
+    <!-- <audio src="audio/WelcomeToWebsite.mp3" autoplay></audio> -->
     <header>
       <h1>Salmon Cookies!</h1>
     </header>
     <main>
       <table id="sales-table"></table>
+      <div class="form-div">
+        <form id="new-shop-form">
+          <fieldset>
+            <legend>Add New Shop</legend>
+            <label for="name-input">New Shop Name</label>
+            <input type="text" id="name-input" name="name" />
+
+            <label for="min-cust-input">Minimum Customers</label>
+            <input type="number" id="min-cust-input" name="minCust" />
+
+            <label for="max-cust-input">Maximum Customers</label>
+            <input type="number" id="max-cust-input" name="maxCust" />
+
+            <label for="avg-cookies-input">Avg. Cookies bought</label>
+            <input type="number" id="avg-cookies-input" name="avgCookies" />
+
+            <button id="submit-button" type="submit">Submit?</button>
+          </fieldset>
+        </form>
+      </div>
     </main>
     <!-- <script src="app.js"></script> -->
     <script src="class07.js"></script>

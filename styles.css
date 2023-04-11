@@ -5,3 +5,20 @@ td {
   border-width: 2px;
   border-style: solid;
 }
+.form-div {
+  display: flex;
+  justify-content: center;
+}
+form {
+  margin: 1rem;
+  width: 50%;
+}
+input {
+  width: 100%;
+}
+button {
+  margin: 5px;
+}
+label {
+  margin: 5px;
+}

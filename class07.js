@@ -47,7 +47,7 @@ function CookieShop(name, minCust, maxCust, avgCookiePerSale) {
   this.maxCust = maxCust;
   this.avgCookiePerSale = avgCookiePerSale;
   this.salesPerHour = [];
-  this.totalSales = 0;
+  // this.totalSales = 0;
   const self = this;
   (function () {
     locationObjectArray.push(self);
@@ -69,6 +69,7 @@ CookieShop.prototype.render = function () {
   let newCell = document.createElement("td");
   newCell.textContent = this.name;
   newRow.appendChild(newCell);
+  this.totalSales = 0;
   for (let i = 0; i < openingHours.length - 1; i++) {
     const newCell = document.createElement("td");
     newCell.textContent = `${this.salesPerHour[i]}`;
@@ -120,4 +121,37 @@ function renderSalesTable() {
 }
 
 renderSalesTable();
-console.log(locationObjectArray);
+
+// vvv form code vvv
+
+const form = document.getElementById("new-shop-form");
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const nameInput = event.target.name.value;
+  console.log(nameInput);
+  const minCustInput = parseInt(event.target.minCust.value);
+  console.log(minCustInput);
+  const maxCustInput = parseInt(event.target.maxCust.value);
+  console.log(maxCustInput);
+  const avgCookiesInput = parseInt(event.target.avgCookies.value);
+  console.log(avgCookiesInput);
+
+  const newShop = new CookieShop(nameInput, minCustInput, maxCustInput, avgCookiesInput);
+
+  console.log(locationObjectArray);
+
+  for (let i = 0; i < locationObjectArray.length; i++) {
+    if (locationObjectArray[i].name == nameInput) {
+      locationObjectArray.pop();
+      locationObjectArray.splice(i, 1, newShop);
+    }
+  }
+
+  console.log(locationObjectArray);
+
+  const table = document.getElementById("sales-table");
+  table.innerHTML = "";
+
+  renderSalesTable();
+});
